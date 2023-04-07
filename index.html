@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <link href="reset.css" rel="stylesheet" />
+  <link href="estilos.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap"
+    rel="stylesheet">
+  <title>Parrot Card Game</title>
+</head>
+
+<body onload="iniciarJogo()">
+    
+    <div class="main escondido">
+        <div class="titulo">PARROT CARD GAME</div>
+
+        <div class="baralho">
+
+            <div class="carta" id="1" onclick="selecionarCarta(this)">
+                <div class="carta-verso face">
+                    <img src="./imagens/back.png">
+                </div>
+                <div class="carta-frente face">
+                    <img src="./imagens/beerparrot.gif">
+                </div>
+            </div>
+
+            <div class="carta" id="2" onclick="selecionarCarta(this)">
+                <div class="carta-verso face">
+                    <img src="./imagens/back.png">
+                </div>
+                <div class="carta-frente face">
+                    <img src="./imagens/birthdayparrot.gif">
+                </div>
+            </div>
+
+            <div class="carta" id="3" onclick="selecionarCarta(this)">
+                <div class="carta-verso face">
+                    <img src="./imagens/back.png">
+                </div>
+                <div class="carta-frente face">
+                    <img src="./imagens/flowerparrot.gif">
+                </div>
+            </div>
+
+            <div class="carta" id="4" onclick="selecionarCarta(this)">
+                <div class="carta-verso face">
+                    <img src="./imagens/back.png">
+                </div>
+                <div class="carta-frente face">
+                    <img src="./imagens/footballparrot.gif">
+                </div>
+            </div>
+
+            <div class="carta" id="5" onclick="selecionarCarta(this)">
+                <div class="carta-verso face">
+                    <img src="./imagens/back.png">
+                </div>
+                <div class="carta-frente face">
+                    <img src="./imagens/moustacheparrot.gif">
+                </div>
+            </div>
+
+            <div class="carta" id="6" onclick="selecionarCarta(this)">
+                <div class="carta-verso face">
+                    <img src="./imagens/back.png">
+                </div>
+                <div class="carta-frente face">
+                    <img src="./imagens/pirateparrot.gif">
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
