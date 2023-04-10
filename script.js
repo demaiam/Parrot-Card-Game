@@ -2,8 +2,8 @@ let cartaPadrao =   `<li class="carta" id="cartaId" onclick="selecionarCarta(thi
                         <div class="carta-verso face">
                             <img src="./imagens/back.png" data-test="face-down-image">
                         </div>
-                        <div class="carta-frente face" data-test="face-up-image">
-                            <img src="./imagens/parrotname.gif">
+                        <div class="carta-frente face">
+                            <img src="./imagens/parrotname.gif" data-test="face-up-image">
                         </div>
                      </li>`
 
