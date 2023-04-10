@@ -93,6 +93,10 @@ li {
     transform: rotateY(-180deg);
 }
 
+.trancar {
+    pointer-events:none;
+}
+
 @media (max-width: 614px){
     .baralho {
         display: flex;

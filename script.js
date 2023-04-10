@@ -1,8 +1,8 @@
-let cartaPadrao =   `<li class="carta" id="cartaId" onclick="selecionarCarta(this)">
+let cartaPadrao =   `<li class="carta" id="cartaId" onclick="selecionarCarta(this)" data-test="card">
                         <div class="carta-verso face">
-                            <img src="./imagens/back.png">
+                            <img src="./imagens/back.png" data-test="face-down-image">
                         </div>
-                        <div class="carta-frente face">
+                        <div class="carta-frente face" data-test="face-up-image">
                             <img src="./imagens/parrotname.gif">
                         </div>
                      </li>`
@@ -11,15 +11,16 @@ let cartaPadrao =   `<li class="carta" id="cartaId" onclick="selecionarCarta(thi
 const nomesPadrao = ["beerparrot", "birthdayparrot", "flowerparrot", "footballparrot", "moustacheparrot", "pirateparrot", "topperhatparrot"];
 
 var contadorJogadas = 0;
+var contadorAchadas = 0;
+var qtdCartas;
 
-var contadorCartas;
+const conteudo = document.querySelector('.main');
 
 function quantasCartas() {
-    var qtdCartas = prompt("Com quantas cartas você quer jogar?"); 
+    qtdCartas = prompt("Com quantas cartas você quer jogar?"); 
     if (qtdCartas % 2 != 0 || qtdCartas < 4 || qtdCartas > 14) {
         quantasCartas();
     }
-    return qtdCartas;
 }
 
 function comparador() { 
@@ -27,9 +28,10 @@ function comparador() {
 }
 
 function iniciarJogo() {
-    var qtdCartas = quantasCartas();
     let carta;
     let nomes = [];
+    
+    quantasCartas();
     
     for (let i = 0; i < (qtdCartas/2); i++) {
         nomes[i] = nomesPadrao[i];
@@ -49,7 +51,6 @@ function iniciarJogo() {
         baralho.innerHTML += carta;
     }
 
-    const conteudo = document.querySelector('.main');
     conteudo.classList.remove('escondido');
 }
 
@@ -60,25 +61,41 @@ function selecionarCarta(carta) {
 }
 
 function verificaCarta(carta, cartaAnterior) {
+    carta.classList.toggle('trancar');
     if (cartaAnterior != null && cartaAnterior.id == carta.id) {
-        //alert('asd');
-        carta.classList.toggle('selecionado');
-        cartaAnterior.classList.toggle('selecionado');
-        carta.classList.toggle('achou');
-        cartaAnterior.classList.toggle('achou');
-        contadorJogadas++;
+        cartasIguais(carta, cartaAnterior);
     } else if (cartaAnterior != null && cartaAnterior.id != carta.id) {
-        contadorJogadas++;
-        setTimeout(remover, 1000, carta, cartaAnterior);
-
-    } else {
-        //alert("adadadad");
-    }   
+        setTimeout(cartasDiferentes, 1000, carta, cartaAnterior);
+    }
+    contadorJogadas++;
 }
 
-function remover(carta, cartaAnterior) {
+function cartasDiferentes(carta, cartaAnterior) {
     carta.classList.toggle('selecionado');
     cartaAnterior.classList.toggle('selecionado');
+    carta.classList.toggle('trancar');
+    cartaAnterior.classList.toggle('trancar');
+}
+
+function cartasIguais(carta, cartaAnterior) {
+    carta.classList.toggle('selecionado');
+    cartaAnterior.classList.toggle('selecionado');
+    carta.classList.toggle('achou');
+    cartaAnterior.classList.toggle('achou');
+    carta.classList.toggle('trancar');
+    cartaAnterior.classList.toggle('trancar');
+    contadorAchadas++;
+    setTimeout(verificaFim, 500);
+}
+
+function trancarInput() {
+    conteudo.classList.toggle('trancar');
+}
+
+function verificaFim() {
+    if (contadorAchadas == qtdCartas/2) {
+        alert('Você ganhou em ' + contadorJogadas + ' jogadas');
+    }
 }
 
 
